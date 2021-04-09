@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Video extends Model
 {
     use HasFactory;
-    protected $fillable=['title','body'];
-    public function image()
-    {
-        return $this->morphOne(Image::class,'imageable');
-    }
+    protected $guarded =[];
     public function comments()
     {
-        return $this->morphMany(Comment::class,'commentable');
-    }
+        return $this->morphMany(Comment::class, 'commentable');
 
+    }
     public function tags()
     {
         return $this->morphToMany(Tag::class,'taggable');
